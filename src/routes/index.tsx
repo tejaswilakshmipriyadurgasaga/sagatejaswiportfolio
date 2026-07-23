@@ -239,25 +239,8 @@ function Hero() {
           </div>
         </div>
 
-        <div className="relative animate-rise" style={{ animationDelay: "150ms" }}>
-          <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-royal/40 to-transparent blur-2xl" />
-          <div className="relative glass rounded-[2rem] p-3 shadow-glow animate-float">
-            <img
-              src={profileImg}
-              alt="Portrait of Saga Tejaswi Lakshmi Priya Durga"
-              width={912}
-              height={1104}
-              className="rounded-[1.5rem] w-full h-auto object-cover"
-            />
-            <div className="absolute -bottom-5 -left-5 glass rounded-2xl px-4 py-3 text-white shadow-soft">
-              <div className="text-[10px] uppercase tracking-widest text-white/60">Focus</div>
-              <div className="text-sm font-semibold">Power BI · SQL · Python</div>
-            </div>
-            <div className="absolute -top-4 -right-4 glass rounded-2xl px-4 py-3 text-white shadow-soft">
-              <div className="text-[10px] uppercase tracking-widest text-white/60">CGPA</div>
-              <div className="text-sm font-semibold">8.19 / 10</div>
-            </div>
-          </div>
+        <div className="relative animate-rise hidden lg:block" style={{ animationDelay: "150ms" }}>
+          <HeroVisual />
         </div>
       </div>
     </section>
