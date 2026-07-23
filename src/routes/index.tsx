@@ -848,15 +848,15 @@ function Experience() {
 
 /* ---------------- CERTIFICATES ---------------- */
 const CERTS = [
-  { title: "Python Essentials 1 & 2", issuer: "Cisco Networking Academy" },
-  { title: "Data Analytics Essentials", issuer: "Cisco Networking Academy" },
-  { title: "SQL & Relational Database 101", issuer: "IBM Skills Network" },
-  { title: "Power BI Micro Course", issuer: "Power BI" },
-  { title: "MS Excel Essentials", issuer: "Uniathena" },
-  { title: "Python Internship", issuer: "BIST Technologies" },
-  { title: "Tata Data Visualization", issuer: "Tata Group · Forage" },
-  { title: "Data Analytics Job Simulation", issuer: "Quantium · Forage" },
-  { title: "Quantum Fundamentals Program", issuer: "Emerging Tech" },
+  { title: "Python Essentials 1 & 2", issuer: "Cisco Networking Academy", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Data Analytics Essentials", issuer: "Cisco Networking Academy", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "SQL & Relational Database 101", issuer: "IBM Skills Network", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Power BI Micro Course", issuer: "Power BI", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "MS Excel Essentials", issuer: "Uniathena", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Python Internship", issuer: "BIST Technologies", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Tata Data Visualization", issuer: "Tata Group · Forage", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Data Analytics Job Simulation", issuer: "Quantium · Forage", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Quantum Fundamentals Program", issuer: "Emerging Tech", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
 ];
 
 function Certificates() {
@@ -870,26 +870,34 @@ function Certificates() {
           dark
           eyebrow="Certificates"
           title="Credentialed and current"
-          subtitle="Continuously learning across analytics, AI and emerging tech."
+          subtitle="Continuously learning across analytics, AI and emerging tech. Click any card to view."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {CERTS.map((c, i) => (
             <Reveal key={c.title} delay={i * 60}>
-              <div className="group glass rounded-2xl p-6 hover:-translate-y-1 hover:bg-white/15 transition h-full">
-                <div className="flex items-center gap-3">
-                  <div className="grid place-items-center h-10 w-10 rounded-lg bg-royal/25 text-royal-soft">
-                    <Sparkles size={18} />
+              <a
+                href={c.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group glass rounded-2xl p-6 hover:-translate-y-1 hover:bg-white/15 transition h-full block"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="grid place-items-center h-10 w-10 rounded-lg bg-royal/25 text-royal-soft">
+                      <Sparkles size={18} />
+                    </div>
+                    <div className="text-xs uppercase tracking-widest text-white/60">
+                      Certificate
+                    </div>
                   </div>
-                  <div className="text-xs uppercase tracking-widest text-white/60">
-                    Certificate
-                  </div>
+                  <ExternalLink size={14} className="text-white/50 group-hover:text-white transition" />
                 </div>
                 <div className="mt-4 font-display text-lg font-semibold leading-snug">
                   {c.title}
                 </div>
                 <div className="mt-1 text-sm text-white/70">{c.issuer}</div>
                 <div className="mt-3 h-px w-10 bg-royal-soft group-hover:w-16 transition-all" />
-              </div>
+              </a>
             </Reveal>
           ))}
         </div>
