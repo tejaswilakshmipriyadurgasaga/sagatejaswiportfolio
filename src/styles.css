@@ -67,19 +67,39 @@
   --ring: var(--royal);
 
   --gradient-hero: radial-gradient(
-      1000px 600px at 85% -10%,
-      color-mix(in oklab, var(--royal) 35%, transparent),
+      1100px 700px at 85% -10%,
+      color-mix(in oklab, white 22%, transparent),
       transparent 60%
     ),
     radial-gradient(
-      800px 500px at -10% 20%,
-      color-mix(in oklab, var(--royal-soft) 30%, transparent),
+      900px 600px at -10% 30%,
+      color-mix(in oklab, #60a5fa 55%, transparent),
       transparent 60%
     ),
-    linear-gradient(180deg, #05132a 0%, #081C3A 50%, #0a2350 100%);
+    linear-gradient(135deg, #1d4ed8 0%, #2563EB 50%, #1e40af 100%);
   --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--navy) 40%, transparent);
   --shadow-glow: 0 20px 60px -20px color-mix(in oklab, var(--royal) 45%, transparent);
 }
+
+@keyframes blob {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px,-40px) scale(1.1); }
+  66% { transform: translate(-25px,20px) scale(0.95); }
+}
+@keyframes bar-grow {
+  0% { height: 20%; }
+  100% { height: var(--h, 80%); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@utility animate-blob { animation: blob 14s ease-in-out infinite; }
+@utility animate-spin-slow { animation: spin-slow 30s linear infinite; }
 
 @layer base {
   * {
