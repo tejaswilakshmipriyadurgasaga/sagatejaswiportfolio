@@ -19,8 +19,6 @@ import {
   Trophy,
   X,
 } from "lucide-react";
-import profileAsset from "@/assets/profile.jpeg.asset.json";
-const profileImg = profileAsset.url;
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -241,25 +239,8 @@ function Hero() {
           </div>
         </div>
 
-        <div className="relative animate-rise" style={{ animationDelay: "150ms" }}>
-          <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-royal/40 to-transparent blur-2xl" />
-          <div className="relative glass rounded-[2rem] p-3 shadow-glow animate-float">
-            <img
-              src={profileImg}
-              alt="Portrait of Saga Tejaswi Lakshmi Priya Durga"
-              width={912}
-              height={1104}
-              className="rounded-[1.5rem] w-full h-auto object-cover"
-            />
-            <div className="absolute -bottom-5 -left-5 glass rounded-2xl px-4 py-3 text-white shadow-soft">
-              <div className="text-[10px] uppercase tracking-widest text-white/60">Focus</div>
-              <div className="text-sm font-semibold">Power BI · SQL · Python</div>
-            </div>
-            <div className="absolute -top-4 -right-4 glass rounded-2xl px-4 py-3 text-white shadow-soft">
-              <div className="text-[10px] uppercase tracking-widest text-white/60">CGPA</div>
-              <div className="text-sm font-semibold">8.19 / 10</div>
-            </div>
-          </div>
+        <div className="relative animate-rise hidden lg:block" style={{ animationDelay: "150ms" }}>
+          <HeroVisual />
         </div>
       </div>
     </section>
@@ -288,12 +269,74 @@ function SocialIcon({
   );
 }
 
+function HeroVisual() {
+  const bars = [55, 78, 42, 88, 64, 92, 70];
+  return (
+    <div className="relative aspect-square max-w-[520px] mx-auto">
+      <div className="absolute inset-0 rounded-full bg-white/10 animate-blob" />
+      <div className="absolute inset-8 rounded-full border border-white/15 animate-spin-slow" />
+      <div className="absolute inset-16 rounded-full border border-white/10 animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "45s" }} />
+
+      {/* Center dashboard card */}
+      <div className="absolute inset-0 grid place-items-center">
+        <div className="glass rounded-3xl p-6 w-[78%] shadow-glow animate-float">
+          <div className="flex items-center justify-between">
+            <div className="text-[10px] uppercase tracking-widest text-white/60">Live Dashboard</div>
+            <div className="flex gap-1">
+              <span className="h-2 w-2 rounded-full bg-red-400/70" />
+              <span className="h-2 w-2 rounded-full bg-yellow-400/70" />
+              <span className="h-2 w-2 rounded-full bg-green-400/70" />
+            </div>
+          </div>
+          <div className="mt-4 flex items-end gap-2 h-32">
+            {bars.map((h, i) => (
+              <div
+                key={i}
+                className="flex-1 rounded-t-md bg-gradient-to-t from-white/30 to-white/90"
+                style={{
+                  ["--h" as string]: `${h}%`,
+                  height: `${h}%`,
+                  animation: `bar-grow 1.2s ${i * 0.12}s ease-out both`,
+                }}
+              />
+            ))}
+          </div>
+          <div className="mt-4 grid grid-cols-3 gap-2 text-white">
+            <div className="rounded-lg bg-white/10 px-2 py-2">
+              <div className="text-[9px] uppercase text-white/60">Revenue</div>
+              <div className="text-sm font-semibold">₹4.2M</div>
+            </div>
+            <div className="rounded-lg bg-white/10 px-2 py-2">
+              <div className="text-[9px] uppercase text-white/60">Growth</div>
+              <div className="text-sm font-semibold">+18%</div>
+            </div>
+            <div className="rounded-lg bg-white/10 px-2 py-2">
+              <div className="text-[9px] uppercase text-white/60">Users</div>
+              <div className="text-sm font-semibold">12.4K</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating pills */}
+      <div className="absolute -top-2 left-4 glass rounded-2xl px-4 py-2 text-white shadow-soft animate-float" style={{ animationDelay: "0.6s" }}>
+        <div className="text-[10px] uppercase tracking-widest text-white/60">Focus</div>
+        <div className="text-sm font-semibold">Power BI · SQL · Python</div>
+      </div>
+      <div className="absolute bottom-4 -right-2 glass rounded-2xl px-4 py-2 text-white shadow-soft animate-float" style={{ animationDelay: "1.2s" }}>
+        <div className="text-[10px] uppercase tracking-widest text-white/60">CGPA</div>
+        <div className="text-sm font-semibold">8.19 / 10</div>
+      </div>
+    </div>
+  );
+}
+
 function FloatingDots() {
-  const dots = Array.from({ length: 22 });
+  const dots = Array.from({ length: 30 });
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
       {dots.map((_, i) => {
-        const size = 4 + ((i * 7) % 10);
+        const size = 4 + ((i * 7) % 12);
         const left = (i * 53) % 100;
         const top = (i * 37) % 100;
         const dur = 8 + ((i * 3) % 10);
@@ -301,7 +344,7 @@ function FloatingDots() {
         return (
           <span
             key={i}
-            className="absolute rounded-full bg-royal-soft/50"
+            className="absolute rounded-full bg-white/40"
             style={{
               width: size,
               height: size,
@@ -313,6 +356,20 @@ function FloatingDots() {
           />
         );
       })}
+      {/* Pulse rings */}
+      {[0, 1, 2].map((i) => (
+        <span
+          key={`r${i}`}
+          className="absolute rounded-full border border-white/30"
+          style={{
+            width: 200,
+            height: 200,
+            left: `${20 + i * 25}%`,
+            top: `${30 + (i % 2) * 20}%`,
+            animation: `pulse-ring 6s ${i * 1.5}s ease-out infinite`,
+          }}
+        />
+      ))}
       <svg className="absolute inset-0 h-full w-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -791,15 +848,15 @@ function Experience() {
 
 /* ---------------- CERTIFICATES ---------------- */
 const CERTS = [
-  { title: "Python Essentials 1 & 2", issuer: "Cisco Networking Academy" },
-  { title: "Data Analytics Essentials", issuer: "Cisco Networking Academy" },
-  { title: "SQL & Relational Database 101", issuer: "IBM Skills Network" },
-  { title: "Power BI Micro Course", issuer: "Power BI" },
-  { title: "MS Excel Essentials", issuer: "Uniathena" },
-  { title: "Python Internship", issuer: "BIST Technologies" },
-  { title: "Tata Data Visualization", issuer: "Tata Group · Forage" },
-  { title: "Data Analytics Job Simulation", issuer: "Quantium · Forage" },
-  { title: "Quantum Fundamentals Program", issuer: "Emerging Tech" },
+  { title: "Python Essentials 1 & 2", issuer: "Cisco Networking Academy", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Data Analytics Essentials", issuer: "Cisco Networking Academy", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "SQL & Relational Database 101", issuer: "IBM Skills Network", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Power BI Micro Course", issuer: "Power BI", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "MS Excel Essentials", issuer: "Uniathena", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Python Internship", issuer: "BIST Technologies", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Tata Data Visualization", issuer: "Tata Group · Forage", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Data Analytics Job Simulation", issuer: "Quantium · Forage", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Quantum Fundamentals Program", issuer: "Emerging Tech", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
 ];
 
 function Certificates() {
@@ -813,26 +870,34 @@ function Certificates() {
           dark
           eyebrow="Certificates"
           title="Credentialed and current"
-          subtitle="Continuously learning across analytics, AI and emerging tech."
+          subtitle="Continuously learning across analytics, AI and emerging tech. Click any card to view."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {CERTS.map((c, i) => (
             <Reveal key={c.title} delay={i * 60}>
-              <div className="group glass rounded-2xl p-6 hover:-translate-y-1 hover:bg-white/15 transition h-full">
-                <div className="flex items-center gap-3">
-                  <div className="grid place-items-center h-10 w-10 rounded-lg bg-royal/25 text-royal-soft">
-                    <Sparkles size={18} />
+              <a
+                href={c.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group glass rounded-2xl p-6 hover:-translate-y-1 hover:bg-white/15 transition h-full block"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="grid place-items-center h-10 w-10 rounded-lg bg-royal/25 text-royal-soft">
+                      <Sparkles size={18} />
+                    </div>
+                    <div className="text-xs uppercase tracking-widest text-white/60">
+                      Certificate
+                    </div>
                   </div>
-                  <div className="text-xs uppercase tracking-widest text-white/60">
-                    Certificate
-                  </div>
+                  <ExternalLink size={14} className="text-white/50 group-hover:text-white transition" />
                 </div>
                 <div className="mt-4 font-display text-lg font-semibold leading-snug">
                   {c.title}
                 </div>
                 <div className="mt-1 text-sm text-white/70">{c.issuer}</div>
                 <div className="mt-3 h-px w-10 bg-royal-soft group-hover:w-16 transition-all" />
-              </div>
+              </a>
             </Reveal>
           ))}
         </div>
