@@ -91,10 +91,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Aspiring Data Analyst | BI Analyst | Power BI Developer. Interactive dashboards, SQL, Python, DAX, Looker Studio.",
+          "Portfolio of Saga Tejaswi Lakshmi Priya Durga — aspiring Data Analyst, Business Intelligence Analyst, and Power BI Developer building dashboards and predictive analytics.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Saga Tejaswi Lakshmi Priya Durga — Data & BI Analyst" },
+      { name: "twitter:description", content: "Portfolio of Saga Tejaswi Lakshmi Priya Durga — aspiring Data Analyst, Business Intelligence Analyst, and Power BI Developer building dashboards and predictive analytics." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/61dbff92-c693-4275-b605-8f8afd93028f" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/61dbff92-c693-4275-b605-8f8afd93028f" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
