@@ -19,7 +19,8 @@ import {
   Trophy,
   X,
 } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
+import profileAsset from "@/assets/profile.jpeg.asset.json";
+const profileImg = profileAsset.url;
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
