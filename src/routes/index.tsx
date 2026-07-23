@@ -25,14 +25,23 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
+const LINKS = {
+  email: "sagatejaswidataanalytics@gmail.com",
+  linkedin: "https://www.linkedin.com/in/stlpdurga",
+  github: "https://github.com/tejaswilakshmipriyadurgasaga",
+  resume:
+    "https://drive.google.com/file/d/1m_H5MHnrMU7qqJxYdSODj5CLRzwkAS_u/view?usp=drivesdk",
+  location: "Gudivada, Andhra Pradesh, India",
+};
+
 const NAV = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
   { id: "certificates", label: "Certificates" },
   { id: "achievements", label: "Achievements" },
-  { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -45,6 +54,7 @@ function Portfolio() {
         <About />
         <Skills />
         <Projects />
+        <Experience />
         <Certificates />
         <Achievements />
         <Resume />
@@ -77,11 +87,8 @@ function Nav() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
-        <a
-          href="#home"
-          className="font-display font-bold text-white text-lg tracking-tight"
-        >
-          Saga<span className="text-royal-soft">.</span>
+        <a href="#home" className="font-display font-bold text-white text-lg tracking-tight">
+          Tejaswi<span className="text-royal-soft">.</span>
         </a>
         <nav className="hidden lg:flex items-center gap-1">
           {NAV.map((n) => (
@@ -95,10 +102,12 @@ function Nav() {
           ))}
         </nav>
         <a
-          href="#contact"
+          href={LINKS.resume}
+          target="_blank"
+          rel="noreferrer"
           className="hidden lg:inline-flex items-center gap-2 rounded-full bg-royal px-4 py-2 text-sm font-medium text-white shadow-glow hover:brightness-110 transition"
         >
-          Let's talk
+          <Download size={14} /> Resume
         </a>
         <button
           aria-label="Toggle menu"
@@ -179,7 +188,7 @@ function Hero() {
         <div className="animate-rise">
           <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1.5 text-xs font-medium text-white/85">
             <Sparkles size={14} className="text-royal-soft" />
-            Available for Data Analyst roles · 2026
+            Open to Data Analyst roles &amp; internships
           </span>
           <h1 className="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.05]">
             Hi, I'm{" "}
@@ -188,17 +197,19 @@ function Hero() {
             </span>
           </h1>
           <p className="mt-5 text-lg sm:text-xl text-royal-soft font-medium">
-            Transforming Data into Business Insights
+            Aspiring Data Analyst · Power BI Developer · Transforming Data into Smart Decisions
           </p>
           <p className="mt-4 text-white/70 text-base sm:text-lg max-w-2xl leading-relaxed">
-            Passionate Computer Science Engineering student with expertise in
-            Excel, SQL, Python, Power BI, DAX, and Google Looker Studio. I build
-            interactive dashboards and predictive analytics solutions that help
-            organizations make data-driven decisions.
+            Computer Science Engineering student with a strong foundation in
+            SQL, Python, Excel, Power BI and Google Looker Studio. I clean,
+            analyze and visualize data to uncover actionable insights that
+            support better business decisions.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#resume"
+              href={LINKS.resume}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
             >
               <Download size={16} /> Download Resume
@@ -217,13 +228,13 @@ function Hero() {
             </a>
           </div>
           <div className="mt-8 flex items-center gap-3">
-            <SocialIcon href="https://linkedin.com" label="LinkedIn">
+            <SocialIcon href={LINKS.linkedin} label="LinkedIn">
               <Linkedin size={18} />
             </SocialIcon>
-            <SocialIcon href="https://github.com" label="GitHub">
+            <SocialIcon href={LINKS.github} label="GitHub">
               <Github size={18} />
             </SocialIcon>
-            <SocialIcon href="mailto:hello@example.com" label="Email">
+            <SocialIcon href={`mailto:${LINKS.email}`} label="Email">
               <Mail size={18} />
             </SocialIcon>
           </div>
@@ -240,16 +251,12 @@ function Hero() {
               className="rounded-[1.5rem] w-full h-auto object-cover"
             />
             <div className="absolute -bottom-5 -left-5 glass rounded-2xl px-4 py-3 text-white shadow-soft">
-              <div className="text-[10px] uppercase tracking-widest text-white/60">
-                Focus
-              </div>
+              <div className="text-[10px] uppercase tracking-widest text-white/60">Focus</div>
               <div className="text-sm font-semibold">Power BI · SQL · Python</div>
             </div>
             <div className="absolute -top-4 -right-4 glass rounded-2xl px-4 py-3 text-white shadow-soft">
-              <div className="text-[10px] uppercase tracking-widest text-white/60">
-                Projects
-              </div>
-              <div className="text-sm font-semibold">5+ Dashboards</div>
+              <div className="text-[10px] uppercase tracking-widest text-white/60">CGPA</div>
+              <div className="text-sm font-semibold">8.19 / 10</div>
             </div>
           </div>
         </div>
@@ -359,6 +366,27 @@ function SectionHead({
 }
 
 /* ---------------- ABOUT ---------------- */
+const EDUCATION = [
+  {
+    degree: "B.Tech — Computer Science & Engineering",
+    school: "V.K.R, V.N.B & A.G.K College of Engineering",
+    period: "2023 – 2027",
+    grade: "CGPA: 8.19 / 10",
+  },
+  {
+    degree: "Intermediate (MPC)",
+    school: "Sri Chaitanya Junior College",
+    period: "2023",
+    grade: "82%",
+  },
+  {
+    degree: "SSC",
+    school: "Ravindra Bharathi School",
+    period: "2021",
+    grade: "90%",
+  },
+];
+
 function About() {
   return (
     <section id="about" className="py-24 bg-background">
@@ -372,21 +400,21 @@ function About() {
           <Reveal className="lg:col-span-2">
             <div className="rounded-3xl bg-card p-8 shadow-soft border border-border/60 h-full">
               <p className="text-foreground/85 leading-relaxed">
-                I'm a Computer Science Engineering student focused on the
-                analytics side of the discipline — the intersection where
-                statistics, SQL and business context meet. I love building
-                dashboards that reveal the story hidden inside a spreadsheet, and
-                predictive models that put a number on the future.
+                I'm an aspiring Data Analyst with a strong foundation in SQL,
+                Python, Excel, Power BI and Google Looker Studio. I enjoy
+                cleaning, analyzing, and visualizing data to uncover actionable
+                insights that support better decision-making.
               </p>
               <p className="mt-4 text-foreground/85 leading-relaxed">
-                My toolkit spans Power BI, DAX, SQL, Python (Pandas, NumPy,
-                Scikit-learn) and Google Looker Studio. I care about clean data,
-                clear visuals, and outcomes teams can act on the same day.
+                My goal is to begin my career as a Data Analyst, contribute to
+                data-driven solutions, and continuously enhance my technical and
+                analytical skills through real-world projects and lifelong
+                learning.
               </p>
               <div className="mt-6 grid sm:grid-cols-3 gap-3">
-                <MiniStat label="Dashboards" value="5+" />
-                <MiniStat label="Certifications" value="5" />
-                <MiniStat label="Tools Mastered" value="10+" />
+                <MiniStat label="Projects" value="7+" />
+                <MiniStat label="Certifications" value="9" />
+                <MiniStat label="CGPA" value="8.19" />
               </div>
             </div>
           </Reveal>
@@ -397,19 +425,18 @@ function About() {
               <div className="mt-4 text-xs uppercase tracking-widest text-white/60">
                 Education
               </div>
-              <div className="mt-2 font-display text-xl font-semibold">
-                Bachelor of Technology
-              </div>
-              <div className="text-white/80">
-                Computer Science &amp; Engineering
-              </div>
-              <div className="mt-3 inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs">
-                2023 – 2027
-              </div>
-              <p className="mt-6 text-sm text-white/70">
-                Coursework in data structures, databases, statistics, and
-                machine learning — paired with hands-on analytics projects.
-              </p>
+              <ul className="mt-4 space-y-4">
+                {EDUCATION.map((e) => (
+                  <li key={e.degree} className="border-l-2 border-royal-soft/60 pl-4">
+                    <div className="font-display font-semibold text-sm">{e.degree}</div>
+                    <div className="text-xs text-white/70">{e.school}</div>
+                    <div className="mt-1 flex flex-wrap gap-2 text-[11px]">
+                      <span className="rounded-full bg-white/10 px-2 py-0.5">{e.period}</span>
+                      <span className="rounded-full bg-royal/30 px-2 py-0.5">{e.grade}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Reveal>
         </div>
@@ -422,9 +449,7 @@ function MiniStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl bg-secondary/60 border border-border/60 px-4 py-3">
       <div className="font-display text-2xl font-bold text-navy">{value}</div>
-      <div className="text-xs uppercase tracking-widest text-muted-foreground">
-        {label}
-      </div>
+      <div className="text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
     </div>
   );
 }
@@ -435,30 +460,48 @@ const SKILL_GROUPS = [
     icon: Database,
     title: "Programming",
     items: [
-      { name: "Python", level: 88 },
-      { name: "SQL", level: 92 },
+      { name: "Python", level: 85 },
+      { name: "SQL", level: 90 },
     ],
   },
   {
     icon: BarChart3,
-    title: "Analytics",
+    title: "Visualization & BI",
     items: [
-      { name: "Power BI", level: 94 },
-      { name: "Excel", level: 90 },
-      { name: "DAX", level: 85 },
+      { name: "Power BI", level: 92 },
+      { name: "Microsoft Excel", level: 90 },
       { name: "Google Looker Studio", level: 82 },
+      { name: "MySQL", level: 85 },
     ],
   },
   {
     icon: Brain,
     title: "Libraries",
     items: [
-      { name: "Pandas", level: 88 },
-      { name: "NumPy", level: 85 },
-      { name: "Matplotlib", level: 80 },
-      { name: "Scikit-learn", level: 78 },
+      { name: "Pandas", level: 86 },
+      { name: "NumPy", level: 82 },
+      { name: "Scikit-Learn", level: 78 },
     ],
   },
+];
+
+const ANALYTICS_SKILLS = [
+  "Data Cleaning",
+  "ETL",
+  "Dashboard Development",
+  "KPI Reporting",
+  "Statistical Analysis",
+  "Machine Learning",
+  "DAX",
+  "Power Query",
+];
+
+const SOFT_SKILLS = [
+  "Problem Solving",
+  "Communication",
+  "Teamwork",
+  "Time Management",
+  "Adaptability",
 ];
 
 function Skills() {
@@ -468,7 +511,7 @@ function Skills() {
         <SectionHead
           eyebrow="Skills"
           title="Stack I ship with"
-          subtitle="A focused toolkit for analytics, BI and predictive modelling."
+          subtitle="A focused toolkit for analytics, BI and applied machine learning."
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SKILL_GROUPS.map((g, i) => (
@@ -478,17 +521,13 @@ function Skills() {
                   <div className="grid place-items-center h-11 w-11 rounded-xl bg-royal/10 text-royal">
                     <g.icon size={20} />
                   </div>
-                  <h3 className="font-display text-lg font-semibold text-navy">
-                    {g.title}
-                  </h3>
+                  <h3 className="font-display text-lg font-semibold text-navy">{g.title}</h3>
                 </div>
                 <ul className="mt-6 space-y-4">
                   {g.items.map((s) => (
                     <li key={s.name}>
                       <div className="flex items-center justify-between text-sm">
-                        <span className="font-medium text-foreground">
-                          {s.name}
-                        </span>
+                        <span className="font-medium text-foreground">{s.name}</span>
                         <span className="text-muted-foreground">{s.level}%</span>
                       </div>
                       <div className="mt-2 h-1.5 rounded-full bg-muted overflow-hidden">
@@ -504,6 +543,39 @@ function Skills() {
             </Reveal>
           ))}
         </div>
+
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
+          <Reveal>
+            <div className="rounded-3xl bg-card p-7 border border-border/60 shadow-soft h-full">
+              <h3 className="font-display text-lg font-semibold text-navy">Analytics Skills</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {ANALYTICS_SKILLS.map((s) => (
+                  <span
+                    key={s}
+                    className="text-xs font-medium rounded-full bg-royal/10 text-royal px-3 py-1.5"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="rounded-3xl bg-card p-7 border border-border/60 shadow-soft h-full">
+              <h3 className="font-display text-lg font-semibold text-navy">Soft Skills</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {SOFT_SKILLS.map((s) => (
+                  <span
+                    key={s}
+                    className="text-xs font-medium rounded-full bg-navy/5 text-navy px-3 py-1.5"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -513,54 +585,97 @@ function Skills() {
 type Project = {
   title: string;
   tags: string[];
+  description: string;
   features: string[];
-  links: { label: string; href: string; icon: typeof Github }[];
-  accent: string;
+  href: string;
 };
 
 const PROJECTS: Project[] = [
   {
     title: "HR Analytics Dashboard",
-    tags: ["Power BI", "Excel", "DAX"],
+    tags: ["Power BI", "DAX", "Excel"],
+    description:
+      "Interactive HR dashboard analyzing employee attrition, workforce demographics and job satisfaction.",
     features: [
-      "Employee Attrition",
-      "Job Satisfaction",
-      "Department Analysis",
-      "Interactive Dashboard",
+      "Attrition Rate Analysis",
+      "Department-wise Distribution",
+      "Satisfaction Score Tracking",
+      "Retention Recommendations",
     ],
-    links: [
-      { label: "GitHub", href: "https://github.com", icon: Github },
-      { label: "Live Demo", href: "#", icon: ExternalLink },
-    ],
-    accent: "from-royal to-royal-soft",
+    href: "https://github.com/tejaswilakshmipriyadurgasaga/HR_Analytics-Dashboard",
   },
   {
     title: "Customer Churn Prediction",
-    tags: ["Python", "Scikit-learn", "Pandas"],
-    features: ["Random Forest Model", "Data Cleaning", "EDA", "Machine Learning"],
-    links: [{ label: "GitHub", href: "https://github.com", icon: Github }],
-    accent: "from-royal-soft to-royal",
+    tags: ["Python", "SQL", "Scikit-Learn", "Power BI"],
+    description:
+      "Machine learning model predicting customer churn with ~78% accuracy, paired with retention insights.",
+    features: ["EDA", "Feature Engineering", "Churn Prediction", "Retention Insights"],
+    href: "https://github.com/tejaswilakshmipriyadurgasaga/Customer-Churn-Prediction",
   },
   {
-    title: "Retail Sales Dashboard",
-    tags: ["Power BI"],
-    features: ["Revenue", "Profit", "Regional Sales", "KPIs"],
-    links: [{ label: "GitHub", href: "https://github.com", icon: Github }],
-    accent: "from-royal to-royal-soft",
+    title: "IPL 2026 Team & Player Dashboard",
+    tags: ["Power BI", "DAX", "Excel"],
+    description:
+      "Interactive analysis of IPL team and player performance across venues, matches and toss outcomes.",
+    features: [
+      "Team Analysis",
+      "Player Performance",
+      "Venue & Toss Impact",
+      "Match Results",
+    ],
+    href: "https://github.com/tejaswilakshmipriyadurgasaga/-IPL-2026-Team-Player-Performance-Dashboard",
   },
   {
-    title: "IPL Analytics Dashboard",
-    tags: ["Power BI"],
-    features: ["Player Statistics", "Team Performance", "Season Insights"],
-    links: [{ label: "GitHub", href: "https://github.com", icon: Github }],
-    accent: "from-royal-soft to-royal",
+    title: "Zomato Restaurant Analytics",
+    tags: ["Power BI", "SQL", "Excel"],
+    description:
+      "Restaurant ratings, cuisine popularity and pricing trends analyzed across cities.",
+    features: [
+      "Restaurant Rankings",
+      "Cuisine Popularity",
+      "Pricing Insights",
+      "Market Trends",
+    ],
+    href: "https://github.com/tejaswilakshmipriyadurgasaga/-Zomato-Restaurant-Analytics-Dashboard-",
   },
   {
-    title: "Zomato Restaurant Analysis",
-    tags: ["Power BI", "Python"],
-    features: ["Restaurant Ratings", "Cost Analysis", "Cuisine Insights"],
-    links: [{ label: "GitHub", href: "https://github.com", icon: Github }],
-    accent: "from-royal to-royal-soft",
+    title: "Retail Sales & Revenue Dashboard",
+    tags: ["Looker Studio", "Python", "Pandas", "Excel"],
+    description:
+      "Interactive dashboard covering sales trends, profit margins and customer segments with real-time KPIs.",
+    features: [
+      "KPI Scorecards",
+      "Revenue Analysis",
+      "Customer Segmentation",
+      "Real-time Tracking",
+    ],
+    href: "https://github.com/tejaswilakshmipriyadurgasaga/Retail-Sales-Revenue-Dashboard",
+  },
+  {
+    title: "Instagram Analytics Dashboard",
+    tags: ["Power BI", "Power Query", "DAX", "Excel"],
+    description:
+      "Social media performance dashboard tracking follower growth, engagement, reach and top posts.",
+    features: [
+      "Follower Growth",
+      "Engagement Tracking",
+      "Reach & Impressions",
+      "Top Posts",
+    ],
+    href: "https://github.com/tejaswilakshmipriyadurgasaga/Instagram-Analytics-Dashboard",
+  },
+  {
+    title: "Investment Analysis Dashboard",
+    tags: ["Power BI", "Power Query", "DAX", "Excel"],
+    description:
+      "Analyzed investment behavior of 40 respondents across savings goals, monitoring habits and information sources.",
+    features: [
+      "Gender-based Analysis",
+      "Investment Objectives",
+      "Information Sources",
+      "7-page Dashboard",
+    ],
+    href: LINKS.github,
   },
 ];
 
@@ -571,16 +686,14 @@ function Projects() {
         <SectionHead
           eyebrow="Projects"
           title="Selected analytics work"
-          subtitle="Dashboards, models and case studies built end-to-end."
+          subtitle="Dashboards, ML models and BI case studies built end-to-end."
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROJECTS.map((p, i) => (
             <Reveal key={p.title} delay={(i % 3) * 100}>
               <article className="group relative h-full rounded-3xl bg-card border border-border/60 p-7 shadow-soft hover:-translate-y-2 hover:shadow-glow transition-all duration-300 overflow-hidden">
-                <div
-                  className={`absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br ${p.accent} opacity-15 blur-3xl group-hover:opacity-30 transition`}
-                />
-                <div className="relative">
+                <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br from-royal to-royal-soft opacity-15 blur-3xl group-hover:opacity-30 transition" />
+                <div className="relative flex h-full flex-col">
                   <div className="grid place-items-center h-11 w-11 rounded-xl bg-navy text-white shadow-soft">
                     <BarChart3 size={20} />
                   </div>
@@ -597,7 +710,10 @@ function Projects() {
                       </span>
                     ))}
                   </div>
-                  <ul className="mt-5 space-y-1.5 text-sm text-foreground/80">
+                  <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                    {p.description}
+                  </p>
+                  <ul className="mt-4 space-y-1.5 text-sm text-foreground/80">
                     {p.features.map((f) => (
                       <li key={f} className="flex items-center gap-2">
                         <span className="h-1.5 w-1.5 rounded-full bg-royal" />
@@ -605,18 +721,16 @@ function Projects() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {p.links.map((l) => (
-                      <a
-                        key={l.label}
-                        href={l.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-navy hover:bg-navy hover:text-white transition"
-                      >
-                        <l.icon size={14} /> {l.label}
-                      </a>
-                    ))}
+                  <div className="mt-6 pt-2">
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-navy hover:bg-navy hover:text-white transition"
+                    >
+                      <Github size={14} /> View on GitHub
+                      <ExternalLink size={12} />
+                    </a>
                   </div>
                 </div>
               </article>
@@ -628,13 +742,63 @@ function Projects() {
   );
 }
 
+/* ---------------- EXPERIENCE ---------------- */
+function Experience() {
+  return (
+    <section id="experience" className="py-24 bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHead eyebrow="Experience" title="Where I've applied the craft" />
+        <Reveal className="max-w-3xl mx-auto">
+          <div className="rounded-3xl bg-card p-8 border border-border/60 shadow-soft">
+            <div className="flex items-start gap-4">
+              <div className="grid place-items-center h-12 w-12 rounded-xl bg-royal/10 text-royal shrink-0">
+                <Briefcase size={22} />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <h3 className="font-display text-lg font-semibold text-navy">
+                    Python Intern
+                  </h3>
+                  <span className="text-xs rounded-full bg-royal/10 text-royal px-2.5 py-1">
+                    Apr 2025 – Jun 2025
+                  </span>
+                </div>
+                <div className="mt-1 text-sm text-muted-foreground">
+                  BIST Technologies Private Limited
+                </div>
+                <ul className="mt-4 space-y-1.5 text-sm text-foreground/85">
+                  {[
+                    "Automated data processing tasks using Python",
+                    "Cleaned and transformed real-world datasets",
+                    "Optimized code performance for analytics pipelines",
+                    "Contributed to hands-on data analytics projects",
+                  ].map((r) => (
+                    <li key={r} className="flex items-start gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-royal shrink-0" />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- CERTIFICATES ---------------- */
 const CERTS = [
-  "Cisco Python Essentials",
-  "Power BI Certificate",
-  "NASSCOM GEN AI",
-  "Quantum Fundamentals",
-  "Wadhwani Entrepreneur Program",
+  { title: "Python Essentials 1 & 2", issuer: "Cisco Networking Academy" },
+  { title: "Data Analytics Essentials", issuer: "Cisco Networking Academy" },
+  { title: "SQL & Relational Database 101", issuer: "IBM Skills Network" },
+  { title: "Power BI Micro Course", issuer: "Power BI" },
+  { title: "MS Excel Essentials", issuer: "Uniathena" },
+  { title: "Python Internship", issuer: "BIST Technologies" },
+  { title: "Tata Data Visualization", issuer: "Tata Group · Forage" },
+  { title: "Data Analytics Job Simulation", issuer: "Quantium · Forage" },
+  { title: "Quantum Fundamentals Program", issuer: "Emerging Tech" },
 ];
 
 function Certificates() {
@@ -652,7 +816,7 @@ function Certificates() {
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {CERTS.map((c, i) => (
-            <Reveal key={c} delay={i * 80}>
+            <Reveal key={c.title} delay={i * 60}>
               <div className="group glass rounded-2xl p-6 hover:-translate-y-1 hover:bg-white/15 transition h-full">
                 <div className="flex items-center gap-3">
                   <div className="grid place-items-center h-10 w-10 rounded-lg bg-royal/25 text-royal-soft">
@@ -662,9 +826,10 @@ function Certificates() {
                     Certificate
                   </div>
                 </div>
-                <div className="mt-4 font-display text-lg font-semibold">
-                  {c}
+                <div className="mt-4 font-display text-lg font-semibold leading-snug">
+                  {c.title}
                 </div>
+                <div className="mt-1 text-sm text-white/70">{c.issuer}</div>
                 <div className="mt-3 h-px w-10 bg-royal-soft group-hover:w-16 transition-all" />
               </div>
             </Reveal>
@@ -677,21 +842,43 @@ function Certificates() {
 
 /* ---------------- ACHIEVEMENTS ---------------- */
 const ACHIEVEMENTS = [
-  { icon: Trophy, title: "Academic Topper", body: "Consistent top performer across semesters." },
-  { icon: Sparkles, title: "Paper Presentation", body: "Presented technical papers at symposia." },
-  { icon: Briefcase, title: "Internships", body: "Hands-on analytics and BI experience." },
-  { icon: Brain, title: "Hackathons", body: "Team lead across data-driven challenges." },
-  { icon: BarChart3, title: "Technical Certifications", body: "Multiple industry-recognized credentials." },
+  {
+    icon: Trophy,
+    title: "Academic Topper",
+    body: "Recognized for highest academic performance in the C.S.E Department.",
+  },
+  {
+    icon: Sparkles,
+    title: "National Paper Presentation",
+    body: "TATVA 2K26 — Seshadri Rao Gudlavalleru Engineering College.",
+  },
+  {
+    icon: Brain,
+    title: "Generative AI Program",
+    body: "Skill Development Program — NASSCOM.",
+  },
+  {
+    icon: Briefcase,
+    title: "Ignite India 5.0",
+    body: "Certificates of Proficiency & Content Completion — Wadhwani Foundation.",
+  },
+  {
+    icon: BarChart3,
+    title: "Certified Entrepreneur Trainee",
+    body: "Wadhwani Global Entrepreneur Program.",
+  },
+  {
+    icon: Trophy,
+    title: "MY Bharat Budget Quest & DFPD-II",
+    body: "Ministry of Youth Affairs and Sports.",
+  },
 ];
 
 function Achievements() {
   return (
     <section id="achievements" className="py-24 bg-secondary/40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHead
-          eyebrow="Achievements"
-          title="Milestones along the way"
-        />
+        <SectionHead eyebrow="Achievements" title="Milestones along the way" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {ACHIEVEMENTS.map((a, i) => (
             <Reveal key={a.title} delay={i * 80}>
@@ -702,9 +889,7 @@ function Achievements() {
                 <h3 className="mt-5 font-display text-lg font-semibold text-navy">
                   {a.title}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  {a.body}
-                </p>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{a.body}</p>
               </div>
             </Reveal>
           ))}
@@ -738,7 +923,9 @@ function Resume() {
                 </p>
               </div>
               <a
-                href="#"
+                href={LINKS.resume}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-royal px-6 py-3.5 font-semibold shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
               >
                 <Download size={18} /> Download Resume
@@ -760,7 +947,7 @@ function Contact() {
         <SectionHead
           eyebrow="Contact"
           title="Let's build something insightful"
-          subtitle="Open to full-time analyst roles, internships and collaborations."
+          subtitle="Open to internships, entry-level Data Analyst roles and collaborations."
         />
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-6">
           <Reveal>
@@ -772,10 +959,25 @@ function Contact() {
                 I usually reply within 24 hours.
               </p>
               <ul className="mt-6 space-y-4">
-                <ContactItem icon={Mail} label="Email" value="hello@example.com" href="mailto:hello@example.com" />
-                <ContactItem icon={Linkedin} label="LinkedIn" value="/in/saga-tejaswi" href="https://linkedin.com" />
-                <ContactItem icon={Github} label="GitHub" value="@saga-tejaswi" href="https://github.com" />
-                <ContactItem icon={MapPin} label="Location" value="India" />
+                <ContactItem
+                  icon={Mail}
+                  label="Email"
+                  value={LINKS.email}
+                  href={`mailto:${LINKS.email}`}
+                />
+                <ContactItem
+                  icon={Linkedin}
+                  label="LinkedIn"
+                  value="linkedin.com/in/stlpdurga"
+                  href={LINKS.linkedin}
+                />
+                <ContactItem
+                  icon={Github}
+                  label="GitHub"
+                  value="github.com/tejaswilakshmipriyadurgasaga"
+                  href={LINKS.github}
+                />
+                <ContactItem icon={MapPin} label="Location" value={LINKS.location} />
               </ul>
             </div>
           </Reveal>
@@ -897,17 +1099,17 @@ function Footer() {
   return (
     <footer className="bg-navy-deep text-white/70">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="text-sm">
+        <div className="text-sm text-center sm:text-left">
           © {new Date().getFullYear()} Saga Tejaswi Lakshmi Priya Durga. All rights reserved.
         </div>
         <div className="flex items-center gap-3">
-          <SocialIcon href="https://linkedin.com" label="LinkedIn">
+          <SocialIcon href={LINKS.linkedin} label="LinkedIn">
             <Linkedin size={16} />
           </SocialIcon>
-          <SocialIcon href="https://github.com" label="GitHub">
+          <SocialIcon href={LINKS.github} label="GitHub">
             <Github size={16} />
           </SocialIcon>
-          <SocialIcon href="mailto:hello@example.com" label="Email">
+          <SocialIcon href={`mailto:${LINKS.email}`} label="Email">
             <Mail size={16} />
           </SocialIcon>
         </div>
