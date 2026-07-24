@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import resumeAsset from "@/assets/SAGA_TEJASWI.pdf.asset.json";
 import {
   ArrowUp,
   BarChart3,
