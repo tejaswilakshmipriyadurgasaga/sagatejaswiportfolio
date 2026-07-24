@@ -848,15 +848,15 @@ function Experience() {
 
 /* ---------------- CERTIFICATES ---------------- */
 const CERTS = [
-  { title: "Python Essentials 1 & 2", issuer: "Cisco Networking Academy", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
-  { title: "Data Analytics Essentials", issuer: "Cisco Networking Academy", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
-  { title: "SQL & Relational Database 101", issuer: "IBM Skills Network", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
-  { title: "Power BI Micro Course", issuer: "Power BI", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
-  { title: "MS Excel Essentials", issuer: "Uniathena", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
-  { title: "Python Internship", issuer: "BIST Technologies", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
-  { title: "Tata Data Visualization", issuer: "Tata Group · Forage", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
-  { title: "Data Analytics Job Simulation", issuer: "Quantium · Forage", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
-  { title: "Quantum Fundamentals Program", issuer: "Emerging Tech", href: "https://www.linkedin.com/in/stlpdurga/details/certifications/" },
+  { title: "Python Essentials 1 & 2", issuer: "Cisco Networking Academy", href: "https://www.linkedin.com/posts/stlpdurga_python-cisconetworkingacademy-pythoninstitute-activity-7438474726035075072-V4mL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "Data Analytics Essentials", issuer: "Cisco Networking Academy", href: "https://www.linkedin.com/posts/stlpdurga_dataanalytics-cisconetworkingacademy-dataanalyticsessentials-activity-7471164910706663424-KuZQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "SQL & Relational Database 101", issuer: "IBM Skills Network", href: "https://www.linkedin.com/posts/stlpdurga_sql-database-dataanalytics-share-7475871241552277504-AO_-/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "Power BI Micro Course", issuer: "Power BI", href: "https://www.linkedin.com/posts/stlpdurga_powerbi-dataanalytics-dataanalyst-activity-7467181662242664449-fVlh?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "MS Excel Essentials", issuer: "Uniathena", href: "https://www.linkedin.com/posts/stlpdurga_excel-dataanalytics-dataanalyst-share-7474066345773580288-ZVxZ/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "Python Internship", issuer: "BIST Technologies", href: "https://www.linkedin.com/posts/stlpdurga_pythondeveloper-internshipcompleted-bisttechnologies-activity-7424783920958976000-kKXD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "Tata Data Visualization", issuer: "Tata Group · Forage", href: "https://www.linkedin.com/posts/stlpdurga_tata-forage-datavisualization-activity-7482716333562912770-GF4I?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "Data Analytics Job Simulation", issuer: "Quantium · Forage", href: "https://www.linkedin.com/posts/stlpdurga_dataanalytics-quantium-forage-activity-7483203577708953600-SWJO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "Quantum Fundamentals Program", issuer: "Emerging Tech", href: "https://www.linkedin.com/posts/stlpdurga_quantumcomputing-emergingtechnology-studentlearning-activity-7438144796558520320-K9fz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
 ];
 
 function Certificates() {

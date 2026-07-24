@@ -68,15 +68,15 @@
 
   --gradient-hero: radial-gradient(
       1100px 700px at 85% -10%,
-      color-mix(in oklab, white 22%, transparent),
+      color-mix(in oklab, white 14%, transparent),
       transparent 60%
     ),
     radial-gradient(
       900px 600px at -10% 30%,
-      color-mix(in oklab, #60a5fa 55%, transparent),
+      color-mix(in oklab, var(--royal) 35%, transparent),
       transparent 60%
     ),
-    linear-gradient(135deg, #1d4ed8 0%, #2563EB 50%, #1e40af 100%);
+    linear-gradient(135deg, #081C3A 0%, #0c2a52 50%, #081C3A 100%);
   --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--navy) 40%, transparent);
   --shadow-glow: 0 20px 60px -20px color-mix(in oklab, var(--royal) 45%, transparent);
 }
