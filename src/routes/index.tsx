@@ -29,8 +29,7 @@ const LINKS = {
   email: "sagatejaswidataanalytics@gmail.com",
   linkedin: "https://www.linkedin.com/in/stlpdurga",
   github: "https://github.com/tejaswilakshmipriyadurgasaga",
-  resume:
-    "https://drive.google.com/file/d/1m_H5MHnrMU7qqJxYdSODj5CLRzwkAS_u/view?usp=drivesdk",
+  resume: resumeAsset.url,
   location: "Gudivada, Andhra Pradesh, India",
 };
 
