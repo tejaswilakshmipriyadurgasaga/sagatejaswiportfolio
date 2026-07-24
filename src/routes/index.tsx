@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 
 const LINKS = {
   email: "sagatejaswidataanalytics@gmail.com",
-  linkedin: "https://www.linkedin.com/in/stlpdurga",
+  linkedin: "https://www.linkedin.com/in/stlpdurga?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   github: "https://github.com/tejaswilakshmipriyadurgasaga",
   resume: resumeAsset.url,
   location: "Gudivada, Andhra Pradesh, India",
