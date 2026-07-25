@@ -1113,15 +1113,15 @@ function Contact() {
                   className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-royal/40 focus:border-royal transition resize-none"
                 />
               </div>
-              <div className="mt-6 flex items-center justify-between gap-4">
-                <p className="text-xs text-muted-foreground">
+              <div className="mt-6 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+                <p className="min-w-0 text-xs text-muted-foreground">
                   {status === "sent"
                     ? "Opening your email app with the message ready to send."
                     : "Your message goes straight to my inbox."}
                 </p>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
+                  className="inline-flex w-fit shrink-0 items-center justify-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
                 >
                   <Send size={16} /> Send Message
                 </button>
