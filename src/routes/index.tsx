@@ -27,11 +27,13 @@ export const Route = createFileRoute("/")({
 
 const LINKS = {
   email: "sagatejaswidataanalytics@gmail.com",
-  linkedin: "https://www.linkedin.com/in/stlpdurga?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+  linkedin: "https://www.linkedin.com/in/stlpdurga",
   github: "https://github.com/tejaswilakshmipriyadurgasaga",
   resume: resumeAsset.url,
   location: "Gudivada, Andhra Pradesh, India",
 };
+
+const RESUME_FILENAME = "SAGA_TEJASWI.pdf";
 
 const NAV = [
   { id: "home", label: "Home" },
@@ -102,8 +104,8 @@ function Nav() {
         </nav>
         <a
           href={LINKS.resume}
-          target="_blank"
-          rel="noreferrer"
+          download={RESUME_FILENAME}
+          aria-label="Download Saga Tejaswi resume PDF"
           className="hidden lg:inline-flex items-center gap-2 rounded-full bg-royal px-4 py-2 text-sm font-medium text-white shadow-glow hover:brightness-110 transition"
         >
           <Download size={14} /> Resume
@@ -207,8 +209,8 @@ function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={LINKS.resume}
-              target="_blank"
-              rel="noreferrer"
+              download={RESUME_FILENAME}
+              aria-label="Download Saga Tejaswi resume PDF"
               className="inline-flex items-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
             >
               <Download size={16} /> Download Resume
@@ -990,8 +992,8 @@ function Resume() {
               </div>
               <a
                 href={LINKS.resume}
-                target="_blank"
-                rel="noreferrer"
+                download={RESUME_FILENAME}
+                aria-label="Download Saga Tejaswi resume PDF"
                 className="inline-flex items-center gap-2 rounded-full bg-royal px-6 py-3.5 font-semibold shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
               >
                 <Download size={18} /> Download Resume
@@ -1007,6 +1009,22 @@ function Resume() {
 /* ---------------- CONTACT ---------------- */
 function Contact() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const subject = String(data.get("subject") ?? "Portfolio enquiry").trim() || "Portfolio enquiry";
+    const message = String(data.get("message") ?? "").trim();
+    const body = [`Name: ${name}`, `Email: ${email}`, "", message].join("\n");
+
+    window.location.href = `mailto:${LINKS.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setStatus("sent");
+    form.reset();
+  };
+
   return (
     <section id="contact" className="py-24 bg-secondary/40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -1049,10 +1067,7 @@ function Contact() {
           </Reveal>
           <Reveal delay={120}>
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setStatus("sent");
-              }}
+              onSubmit={handleSubmit}
               className="rounded-3xl bg-card p-8 border border-border/60 shadow-soft"
             >
               <div className="grid sm:grid-cols-2 gap-4">
@@ -1067,6 +1082,7 @@ function Contact() {
                 <textarea
                   required
                   maxLength={1000}
+                  name="message"
                   rows={5}
                   placeholder="Tell me about the role or project…"
                   className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-royal/40 focus:border-royal transition resize-none"
@@ -1075,7 +1091,7 @@ function Contact() {
               <div className="mt-6 flex items-center justify-between gap-4">
                 <p className="text-xs text-muted-foreground">
                   {status === "sent"
-                    ? "Thanks — I'll be in touch soon."
+                    ? "Opening your email app with the message ready to send."
                     : "Your message goes straight to my inbox."}
                 </p>
                 <button
