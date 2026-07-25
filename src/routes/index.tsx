@@ -1100,7 +1100,7 @@ function Contact() {
               </div>
               <Field label="Subject" name="subject" placeholder="What's this about?" className="mt-4" />
               <div className="mt-4">
-                <label className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                <label htmlFor="message" className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
                   Message
                 </label>
                 <textarea
