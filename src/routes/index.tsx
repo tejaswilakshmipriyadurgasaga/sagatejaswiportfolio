@@ -1104,6 +1104,7 @@ function Contact() {
                   Message
                 </label>
                 <textarea
+                  id="message"
                   required
                   maxLength={1000}
                   name="message"
@@ -1183,12 +1184,14 @@ function Field({
   placeholder?: string;
   className?: string;
 }) {
+  const id = `contact-${name}`;
   return (
     <div className={className}>
-      <label className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+      <label htmlFor={id} className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
         {label}
       </label>
       <input
+        id={id}
         required
         maxLength={200}
         name={name}
