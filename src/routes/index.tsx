@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import resumeAsset from "@/assets/SAGA_TEJASWI.pdf.asset.json";
 import {
   ArrowUp,
@@ -22,16 +22,42 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Saga Tejaswi — Data Analyst Portfolio" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Saga Tejaswi Lakshmi Priya Durga, aspiring Data Analyst and Power BI Developer with projects in SQL, Python, Excel and BI dashboards.",
+      },
+      { property: "og:title", content: "Saga Tejaswi — Data Analyst Portfolio" },
+      {
+        property: "og:description",
+        content:
+          "Explore Saga Tejaswi's data analytics portfolio, Power BI dashboards, Python projects, certifications, resume and contact details.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Saga Tejaswi — Data Analyst Portfolio" },
+      {
+        name: "twitter:description",
+        content:
+          "Data Analyst portfolio with dashboards, analytics projects, certifications, resume and contact links.",
+      },
+    ],
+  }),
   component: Portfolio,
 });
 
 const LINKS = {
   email: "sagatejaswidataanalytics@gmail.com",
-  linkedin: "https://www.linkedin.com/in/stlpdurga?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+  linkedin: "https://www.linkedin.com/in/stlpdurga",
   github: "https://github.com/tejaswilakshmipriyadurgasaga",
   resume: resumeAsset.url,
   location: "Gudivada, Andhra Pradesh, India",
 };
+
+const RESUME_FILENAME = "SAGA_TEJASWI.pdf";
 
 const NAV = [
   { id: "home", label: "Home" },
@@ -102,8 +128,8 @@ function Nav() {
         </nav>
         <a
           href={LINKS.resume}
-          target="_blank"
-          rel="noreferrer"
+          download={RESUME_FILENAME}
+          aria-label="Download Saga Tejaswi resume PDF"
           className="hidden lg:inline-flex items-center gap-2 rounded-full bg-royal px-4 py-2 text-sm font-medium text-white shadow-glow hover:brightness-110 transition"
         >
           <Download size={14} /> Resume
@@ -207,8 +233,8 @@ function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={LINKS.resume}
-              target="_blank"
-              rel="noreferrer"
+              download={RESUME_FILENAME}
+              aria-label="Download Saga Tejaswi resume PDF"
               className="inline-flex items-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
             >
               <Download size={16} /> Download Resume
@@ -990,8 +1016,8 @@ function Resume() {
               </div>
               <a
                 href={LINKS.resume}
-                target="_blank"
-                rel="noreferrer"
+                download={RESUME_FILENAME}
+                aria-label="Download Saga Tejaswi resume PDF"
                 className="inline-flex items-center gap-2 rounded-full bg-royal px-6 py-3.5 font-semibold shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
               >
                 <Download size={18} /> Download Resume
@@ -1007,6 +1033,22 @@ function Resume() {
 /* ---------------- CONTACT ---------------- */
 function Contact() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const subject = String(data.get("subject") ?? "Portfolio enquiry").trim() || "Portfolio enquiry";
+    const message = String(data.get("message") ?? "").trim();
+    const body = [`Name: ${name}`, `Email: ${email}`, "", message].join("\n");
+
+    window.location.href = `mailto:${LINKS.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setStatus("sent");
+    form.reset();
+  };
+
   return (
     <section id="contact" className="py-24 bg-secondary/40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -1049,10 +1091,7 @@ function Contact() {
           </Reveal>
           <Reveal delay={120}>
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setStatus("sent");
-              }}
+              onSubmit={handleSubmit}
               className="rounded-3xl bg-card p-8 border border-border/60 shadow-soft"
             >
               <div className="grid sm:grid-cols-2 gap-4">
@@ -1061,26 +1100,28 @@ function Contact() {
               </div>
               <Field label="Subject" name="subject" placeholder="What's this about?" className="mt-4" />
               <div className="mt-4">
-                <label className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                <label htmlFor="message" className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
                   Message
                 </label>
                 <textarea
+                  id="message"
                   required
                   maxLength={1000}
+                  name="message"
                   rows={5}
                   placeholder="Tell me about the role or project…"
                   className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-royal/40 focus:border-royal transition resize-none"
                 />
               </div>
-              <div className="mt-6 flex items-center justify-between gap-4">
-                <p className="text-xs text-muted-foreground">
+              <div className="mt-6 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+                <p className="min-w-0 text-xs text-muted-foreground">
                   {status === "sent"
-                    ? "Thanks — I'll be in touch soon."
+                    ? "Opening your email app with the message ready to send."
                     : "Your message goes straight to my inbox."}
                 </p>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
+                  className="inline-flex w-fit shrink-0 items-center justify-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
                 >
                   <Send size={16} /> Send Message
                 </button>
@@ -1143,12 +1184,14 @@ function Field({
   placeholder?: string;
   className?: string;
 }) {
+  const id = `contact-${name}`;
   return (
     <div className={className}>
-      <label className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+      <label htmlFor={id} className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
         {label}
       </label>
       <input
+        id={id}
         required
         maxLength={200}
         name={name}
