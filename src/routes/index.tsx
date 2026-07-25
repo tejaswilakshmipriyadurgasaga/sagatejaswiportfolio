@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import resumeAsset from "@/assets/SAGA_TEJASWI.pdf.asset.json";
 import {
   ArrowUp,
@@ -1010,7 +1010,7 @@ function Resume() {
 function Contact() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
