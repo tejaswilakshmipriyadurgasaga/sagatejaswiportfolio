@@ -22,6 +22,30 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Saga Tejaswi — Data Analyst Portfolio" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Saga Tejaswi Lakshmi Priya Durga, aspiring Data Analyst and Power BI Developer with projects in SQL, Python, Excel and BI dashboards.",
+      },
+      { property: "og:title", content: "Saga Tejaswi — Data Analyst Portfolio" },
+      {
+        property: "og:description",
+        content:
+          "Explore Saga Tejaswi's data analytics portfolio, Power BI dashboards, Python projects, certifications, resume and contact details.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Saga Tejaswi — Data Analyst Portfolio" },
+      {
+        name: "twitter:description",
+        content:
+          "Data Analyst portfolio with dashboards, analytics projects, certifications, resume and contact links.",
+      },
+    ],
+  }),
   component: Portfolio,
 });
 
