@@ -147,6 +147,9 @@ function Nav() {
         </nav>
         <a
           href={LINKS.resume}
+          onClick={downloadResume}
+          target="_blank"
+          rel="noreferrer"
           download={RESUME_FILENAME}
           aria-label="Download Saga Tejaswi resume PDF"
           className="hidden lg:inline-flex items-center gap-2 rounded-full bg-royal px-4 py-2 text-sm font-medium text-white shadow-glow hover:brightness-110 transition"
@@ -252,6 +255,9 @@ function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={LINKS.resume}
+              onClick={downloadResume}
+              target="_blank"
+              rel="noreferrer"
               download={RESUME_FILENAME}
               aria-label="Download Saga Tejaswi resume PDF"
               className="inline-flex items-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
@@ -1036,6 +1042,9 @@ function Resume() {
               </div>
               <a
                 href={LINKS.resume}
+                onClick={downloadResume}
+                target="_blank"
+                rel="noreferrer"
                 download={RESUME_FILENAME}
                 aria-label="Download Saga Tejaswi resume PDF"
                 className="inline-flex items-center gap-2 rounded-full bg-royal px-6 py-3.5 font-semibold shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
