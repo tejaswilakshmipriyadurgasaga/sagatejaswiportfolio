@@ -59,6 +59,25 @@ const LINKS = {
 
 const RESUME_FILENAME = "SAGA_TEJASWI.pdf";
 
+async function downloadResume(e: React.MouseEvent<HTMLAnchorElement>) {
+  try {
+    e.preventDefault();
+    const res = await fetch(LINKS.resume, { credentials: "omit" });
+    if (!res.ok) throw new Error("fetch failed");
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = RESUME_FILENAME;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  } catch {
+    window.open(LINKS.resume, "_blank", "noopener,noreferrer");
+  }
+}
+
 const NAV = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
@@ -883,6 +902,7 @@ const CERTS = [
   { title: "Tata Data Visualization", issuer: "Tata Group · Forage", href: "https://www.linkedin.com/posts/stlpdurga_tata-forage-datavisualization-activity-7482716333562912770-GF4I?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
   { title: "Data Analytics Job Simulation", issuer: "Quantium · Forage", href: "https://www.linkedin.com/posts/stlpdurga_dataanalytics-quantium-forage-activity-7483203577708953600-SWJO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
   { title: "Quantum Fundamentals Program", issuer: "Emerging Tech", href: "https://www.linkedin.com/posts/stlpdurga_quantumcomputing-emergingtechnology-studentlearning-activity-7438144796558520320-K9fz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "Fundamentals of Artificial Intelligence (2026)", issuer: "Wadhwani Foundation", href: "https://www.linkedin.com/posts/stlpdurga_artificialintelligence-ai-wadhwanifoundation-share-7483444458827743232-UAgO/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
 ];
 
 function Certificates() {
