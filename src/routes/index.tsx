@@ -59,6 +59,25 @@ const LINKS = {
 
 const RESUME_FILENAME = "SAGA_TEJASWI.pdf";
 
+async function downloadResume(e: React.MouseEvent<HTMLAnchorElement>) {
+  try {
+    e.preventDefault();
+    const res = await fetch(LINKS.resume, { credentials: "omit" });
+    if (!res.ok) throw new Error("fetch failed");
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = RESUME_FILENAME;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  } catch {
+    window.open(LINKS.resume, "_blank", "noopener,noreferrer");
+  }
+}
+
 const NAV = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
@@ -128,6 +147,9 @@ function Nav() {
         </nav>
         <a
           href={LINKS.resume}
+          onClick={downloadResume}
+          target="_blank"
+          rel="noreferrer"
           download={RESUME_FILENAME}
           aria-label="Download Saga Tejaswi resume PDF"
           className="hidden lg:inline-flex items-center gap-2 rounded-full bg-royal px-4 py-2 text-sm font-medium text-white shadow-glow hover:brightness-110 transition"
@@ -233,6 +255,9 @@ function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={LINKS.resume}
+              onClick={downloadResume}
+              target="_blank"
+              rel="noreferrer"
               download={RESUME_FILENAME}
               aria-label="Download Saga Tejaswi resume PDF"
               className="inline-flex items-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
@@ -883,6 +908,7 @@ const CERTS = [
   { title: "Tata Data Visualization", issuer: "Tata Group · Forage", href: "https://www.linkedin.com/posts/stlpdurga_tata-forage-datavisualization-activity-7482716333562912770-GF4I?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
   { title: "Data Analytics Job Simulation", issuer: "Quantium · Forage", href: "https://www.linkedin.com/posts/stlpdurga_dataanalytics-quantium-forage-activity-7483203577708953600-SWJO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
   { title: "Quantum Fundamentals Program", issuer: "Emerging Tech", href: "https://www.linkedin.com/posts/stlpdurga_quantumcomputing-emergingtechnology-studentlearning-activity-7438144796558520320-K9fz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
+  { title: "Fundamentals of Artificial Intelligence (2026)", issuer: "Wadhwani Foundation", href: "https://www.linkedin.com/posts/stlpdurga_artificialintelligence-ai-wadhwanifoundation-share-7483444458827743232-UAgO/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFMzleQBtRtjC6YqOWEjhcCege6oV65Y-nk" },
 ];
 
 function Certificates() {
@@ -1016,6 +1042,9 @@ function Resume() {
               </div>
               <a
                 href={LINKS.resume}
+                onClick={downloadResume}
+                target="_blank"
+                rel="noreferrer"
                 download={RESUME_FILENAME}
                 aria-label="Download Saga Tejaswi resume PDF"
                 className="inline-flex items-center gap-2 rounded-full bg-royal px-6 py-3.5 font-semibold shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
