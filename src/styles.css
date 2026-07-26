@@ -68,15 +68,15 @@
 
   --gradient-hero: radial-gradient(
       1100px 700px at 85% -10%,
-      color-mix(in oklab, white 14%, transparent),
+      color-mix(in oklab, var(--royal) 30%, transparent),
       transparent 60%
     ),
     radial-gradient(
       900px 600px at -10% 30%,
-      color-mix(in oklab, var(--royal) 35%, transparent),
+      color-mix(in oklab, var(--royal) 40%, transparent),
       transparent 60%
     ),
-    linear-gradient(135deg, #081C3A 0%, #0c2a52 50%, #081C3A 100%);
+    linear-gradient(135deg, #04122a 0%, #081C3A 35%, #0c2a52 65%, #04122a 100%);
   --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--navy) 40%, transparent);
   --shadow-glow: 0 20px 60px -20px color-mix(in oklab, var(--royal) 45%, transparent);
 }
@@ -132,8 +132,15 @@
   border: 1px solid color-mix(in oklab, var(--navy) 8%, transparent);
 }
 
+@keyframes hero-shift {
+  0%, 100% { background-position: 0% 50%, 100% 50%, 0% 0%; }
+  50% { background-position: 100% 50%, 0% 50%, 100% 100%; }
+}
+
 @utility hero-bg {
   background: var(--gradient-hero);
+  background-size: 200% 200%, 200% 200%, 200% 200%;
+  animation: hero-shift 18s ease-in-out infinite;
 }
 
 @utility shadow-soft {
