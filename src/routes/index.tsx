@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import resumeAsset from "@/assets/SAGA_TEJASWI.pdf.asset.json";
 import {
   ArrowUp,
   BarChart3,
@@ -53,30 +52,11 @@ const LINKS = {
   email: "sagatejaswidataanalytics@gmail.com",
   linkedin: "https://www.linkedin.com/in/stlpdurga",
   github: "https://github.com/tejaswilakshmipriyadurgasaga",
-  resume: resumeAsset.url,
+  resume: "/api/public/resume",
   location: "Gudivada, Andhra Pradesh, India",
 };
 
 const RESUME_FILENAME = "SAGA_TEJASWI.pdf";
-
-async function downloadResume(e: React.MouseEvent<HTMLAnchorElement>) {
-  try {
-    e.preventDefault();
-    const res = await fetch(LINKS.resume, { credentials: "omit" });
-    if (!res.ok) throw new Error("fetch failed");
-    const blob = await res.blob();
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = RESUME_FILENAME;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  } catch {
-    window.open(LINKS.resume, "_blank", "noopener,noreferrer");
-  }
-}
 
 const NAV = [
   { id: "home", label: "Home" },
@@ -147,9 +127,6 @@ function Nav() {
         </nav>
         <a
           href={LINKS.resume}
-          onClick={downloadResume}
-          target="_blank"
-          rel="noreferrer"
           download={RESUME_FILENAME}
           aria-label="Download Saga Tejaswi resume PDF"
           className="hidden lg:inline-flex items-center gap-2 rounded-full bg-royal px-4 py-2 text-sm font-medium text-white shadow-glow hover:brightness-110 transition"
@@ -255,9 +232,6 @@ function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={LINKS.resume}
-              onClick={downloadResume}
-              target="_blank"
-              rel="noreferrer"
               download={RESUME_FILENAME}
               aria-label="Download Saga Tejaswi resume PDF"
               className="inline-flex items-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
@@ -1042,9 +1016,6 @@ function Resume() {
               </div>
               <a
                 href={LINKS.resume}
-                onClick={downloadResume}
-                target="_blank"
-                rel="noreferrer"
                 download={RESUME_FILENAME}
                 aria-label="Download Saga Tejaswi resume PDF"
                 className="inline-flex items-center gap-2 rounded-full bg-royal px-6 py-3.5 font-semibold shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition"
