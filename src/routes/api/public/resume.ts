@@ -7,6 +7,8 @@ export const Route = createFileRoute("/api/public/resume")({
   server: {
     handlers: {
       GET: async ({ request }) => {
+        const requestUrl = new URL(request.url);
+        const shouldDownload = requestUrl.searchParams.get("download") === "1";
         const resumeUrl = new URL(resumeAsset.url, request.url);
         const resumeResponse = await fetch(resumeUrl);
 
@@ -17,7 +19,7 @@ export const Route = createFileRoute("/api/public/resume")({
         return new Response(resumeResponse.body, {
           headers: {
             "Content-Type": "application/pdf",
-            "Content-Disposition": `attachment; filename="${RESUME_FILENAME}"`,
+            "Content-Disposition": `${shouldDownload ? "attachment" : "inline"}; filename="${RESUME_FILENAME}"`,
             "Cache-Control": "public, max-age=3600",
           },
         });
