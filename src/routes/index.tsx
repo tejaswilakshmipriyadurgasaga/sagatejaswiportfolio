@@ -19,7 +19,6 @@ import {
   Trophy,
   X,
 } from "lucide-react";
-import resumeAsset from "@/assets/SAGA_TEJASWI.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -53,7 +52,7 @@ const LINKS = {
   email: "sagatejaswidataanalytics@gmail.com",
   linkedin: "https://www.linkedin.com/in/stlpdurga",
   github: "https://github.com/tejaswilakshmipriyadurgasaga",
-  resume: resumeAsset.url,
+  resume: "/resume",
   resumeDownload: "/api/public/resume?download=1",
   location: "Gudivada, Andhra Pradesh, India",
 };
