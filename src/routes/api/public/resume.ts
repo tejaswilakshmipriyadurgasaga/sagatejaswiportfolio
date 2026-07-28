@@ -20,7 +20,7 @@ export const Route = createFileRoute("/api/public/resume")({
           headers: {
             "Content-Type": "application/pdf",
             "Content-Disposition": `${shouldDownload ? "attachment" : "inline"}; filename="${RESUME_FILENAME}"`,
-            "Cache-Control": "public, max-age=3600",
+            "Cache-Control": "no-store, max-age=0",
           },
         });
       },

@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, Download, ExternalLink } from "lucide-react";
+import resumeAsset from "@/assets/SAGA_TEJASWI.pdf.asset.json";
+import resumePreviewAsset from "@/assets/SAGA_TEJASWI_resume_preview.jpg.asset.json";
 
-const RESUME_VIEW_URL = "/api/public/resume";
+const RESUME_VIEW_URL = resumeAsset.url;
 const RESUME_DOWNLOAD_URL = "/api/public/resume?download=1";
 
 export const Route = createFileRoute("/resume")({
@@ -76,11 +78,11 @@ function ResumePage() {
             </div>
           </div>
 
-          <div className="min-h-0 flex-1 overflow-hidden rounded-3xl border border-white/15 bg-white shadow-glow">
-            <iframe
-              title="Saga Tejaswi resume PDF"
-              src={RESUME_VIEW_URL}
-              className="h-[76vh] w-full bg-white sm:h-[78vh]"
+          <div className="min-h-0 flex-1 overflow-auto rounded-3xl border border-white/15 bg-white shadow-glow">
+            <img
+              src={resumePreviewAsset.url}
+              alt="Preview of Saga Tejaswi Lakshmi Priya Durga resume"
+              className="mx-auto block h-auto w-full max-w-5xl bg-white"
             />
           </div>
         </div>
