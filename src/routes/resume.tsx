@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, Download, ExternalLink } from "lucide-react";
 import resumeAsset from "@/assets/SAGA_TEJASWI.pdf.asset.json";
+import resumePreviewAsset from "@/assets/SAGA_TEJASWI_resume_preview.jpg.asset.json";
 
 const RESUME_VIEW_URL = resumeAsset.url;
 const RESUME_DOWNLOAD_URL = "/api/public/resume?download=1";
@@ -77,27 +78,12 @@ function ResumePage() {
             </div>
           </div>
 
-          <div className="min-h-0 flex-1 overflow-hidden rounded-3xl border border-white/15 bg-white shadow-glow">
-            <object
-              aria-label="Saga Tejaswi resume PDF"
-              data={RESUME_VIEW_URL}
-              type="application/pdf"
-              className="h-[76vh] w-full bg-white sm:h-[78vh]"
-            >
-              <div className="flex h-[76vh] flex-col items-center justify-center gap-4 bg-white px-6 text-center text-navy sm:h-[78vh]">
-                <p className="max-w-md text-sm font-medium">
-                  Your browser cannot preview this PDF inline.
-                </p>
-                <a
-                  href={RESUME_VIEW_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-royal px-5 py-3 text-sm font-semibold text-white shadow-glow transition hover:brightness-110"
-                >
-                  <ExternalLink size={16} /> Open Resume
-                </a>
-              </div>
-            </object>
+          <div className="min-h-0 flex-1 overflow-auto rounded-3xl border border-white/15 bg-white shadow-glow">
+            <img
+              src={resumePreviewAsset.url}
+              alt="Preview of Saga Tejaswi Lakshmi Priya Durga resume"
+              className="mx-auto block h-auto w-full max-w-5xl bg-white"
+            />
           </div>
         </div>
       </section>
