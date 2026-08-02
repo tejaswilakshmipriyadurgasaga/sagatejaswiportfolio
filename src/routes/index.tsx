@@ -757,7 +757,7 @@ const PROJECTS: Project[] = [
       "Information Sources",
       "7-page Dashboard",
     ],
-    href: LINKS.github,
+    href: "https://github.com/tejaswilakshmipriyadurgasaga/Investment-Analysis-Dashboard-PowerBI",
   },
 ];
 
