@@ -1,10 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, Download, ExternalLink } from "lucide-react";
-import resumeAsset from "@/assets/SAGA_TEJASWI.pdf.asset.json";
 import resumePreviewAsset from "@/assets/SAGA_TEJASWI_resume_preview.jpg.asset.json";
 
-const RESUME_VIEW_URL = resumeAsset.url;
-const RESUME_DOWNLOAD_URL = "/api/public/resume?download=1";
+const RESUME_VIEW_URL = "/SAGA_TEJASWI.pdf";
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
@@ -56,7 +54,8 @@ function ResumePage() {
                 <ExternalLink size={16} /> Open PDF
               </a>
               <a
-                href={RESUME_DOWNLOAD_URL}
+                href={RESUME_VIEW_URL}
+                download="SAGA_TEJASWI.pdf"
                 className="inline-flex items-center gap-2 rounded-full bg-royal px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:brightness-110"
               >
                 <Download size={16} /> Download
