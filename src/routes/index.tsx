@@ -839,8 +839,8 @@ const EXPERIENCE = [
     ],
   },
   {
-    role: "Power BI -- Cognifyz IT Solutions Pvt Lmd",
-    period: "",
+    role: "Power BI Intern",
+    period: "July 2026 – Aug 2026",
     company: "Cognifyz IT Solutions Pvt. Ltd.",
     points: [
       "Built interactive Power BI dashboards using Power Query, DAX, and Data Modeling for business analytics.",
