@@ -826,50 +826,77 @@ function Projects() {
 }
 
 /* ---------------- EXPERIENCE ---------------- */
+const EXPERIENCE = [
+  {
+    role: "Python Intern",
+    period: "Apr 2025 – Jun 2025",
+    company: "BIST Technologies Private Limited",
+    points: [
+      "Automated data processing tasks using Python",
+      "Cleaned and transformed real-world datasets",
+      "Optimized code performance for analytics pipelines",
+      "Contributed to hands-on data analytics projects",
+    ],
+  },
+  {
+    role: "Power BI -- Cognifyz IT Solutions Pvt Lmd",
+    period: "",
+    company: "Cognifyz IT Solutions Pvt. Ltd.",
+    points: [
+      "Built interactive Power BI dashboards using Power Query, DAX, and Data Modeling for business analytics.",
+      "Designed KPI dashboards with charts, slicers, and filters to present meaningful insights from datasets.",
+      "Demonstrated skills in Data Analysis, Dashboard Development, Business Intelligence, and Report Automation.",
+      "Successfully completed a Power BI Internship at Cognifyz IT Solutions Pvt. Ltd., strengthening practical knowledge of Power BI, DAX, Data Visualization, and Data Analytics.",
+    ],
+  },
+];
+
 function Experience() {
   return (
     <section id="experience" className="py-24 bg-secondary/40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHead eyebrow="Experience" title="Where I've applied the craft" />
-        <Reveal className="max-w-3xl mx-auto">
-          <div className="rounded-3xl bg-card p-8 border border-border/60 shadow-soft">
-            <div className="flex items-start gap-4">
-              <div className="grid place-items-center h-12 w-12 rounded-xl bg-royal/10 text-royal shrink-0">
-                <Briefcase size={22} />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <h3 className="font-display text-lg font-semibold text-navy">
-                    Python Intern
-                  </h3>
-                  <span className="text-xs rounded-full bg-royal/10 text-royal px-2.5 py-1">
-                    Apr 2025 – Jun 2025
-                  </span>
+        <div className="max-w-3xl mx-auto space-y-6">
+          {EXPERIENCE.map((exp) => (
+            <Reveal key={exp.role}>
+              <div className="rounded-3xl bg-card p-8 border border-border/60 shadow-soft">
+                <div className="flex items-start gap-4">
+                  <div className="grid place-items-center h-12 w-12 rounded-xl bg-royal/10 text-royal shrink-0">
+                    <Briefcase size={22} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <h3 className="font-display text-lg font-semibold text-navy">
+                        {exp.role}
+                      </h3>
+                      {exp.period ? (
+                        <span className="text-xs rounded-full bg-royal/10 text-royal px-2.5 py-1">
+                          {exp.period}
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="mt-1 text-sm text-muted-foreground">
+                      {exp.company}
+                    </div>
+                    <ul className="mt-4 space-y-1.5 text-sm text-foreground/85">
+                      {exp.points.map((r) => (
+                        <li key={r} className="flex items-start gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-royal shrink-0" />
+                          <span className="min-w-0">{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div className="mt-1 text-sm text-muted-foreground">
-                  BIST Technologies Private Limited
-                </div>
-                <ul className="mt-4 space-y-1.5 text-sm text-foreground/85">
-                  {[
-                    "Automated data processing tasks using Python",
-                    "Cleaned and transformed real-world datasets",
-                    "Optimized code performance for analytics pipelines",
-                    "Contributed to hands-on data analytics projects",
-                  ].map((r) => (
-                    <li key={r} className="flex items-start gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-royal shrink-0" />
-                      {r}
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------------- CERTIFICATES ---------------- */
 const CERTS = [
